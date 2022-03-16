@@ -1,0 +1,250 @@
+
+/*##############################################################################################################*/
+/* Base														*/
+/*##############################################################################################################*/
+
+html body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%; 
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-image: url("bg.png") !important;
+	background-size: auto!important;
+	background-repeat: repeat;
+	z-index: 1;
+	display: block;
+}
+
+.t-scroll {
+	overflow: auto !important;
+}
+
+/*##############################################################################################################*/
+/* Estilos auxiliares 												*/
+/*##############################################################################################################*/
+
+.block-mt2rem {
+	margin-top: 2rem;
+}
+
+
+.block-mt130px {
+	margin-top: 130px;
+}
+
+
+.block-mt150px {
+	margin-top: 150px;
+}
+
+
+.block-mb130px {
+	margin-bottom: 130px;
+}
+
+
+.block-mb150px {
+	margin-bottom: 150px;
+}
+
+.map { height: 480px; }
+
+.map-small { height: 240px; }
+
+.right { margin-left: auto; }
+
+.left { margin-right: auto; } 
+
+
+.text-justify{
+	text-align: justify !important;
+	text-justify: inter-word !important;
+} 
+
+
+/*##############################################################################################################*/
+/* Cardis e cards de mensagens de erro e ou sucesso 								*/
+/*##############################################################################################################*/
+
+.error_msg, .success_msg, .card-info, .card-success, .card-danger, .card-dark, .card-warning, .card-secondary { border-radius: 20px 3px 3px 20px; }
+.error_msg, .success_msg { background-color:#eeeeee; }
+.error_msg { border-left: solid 20px #dc3545; }
+.success_msg { border-left: solid 20px #146c43; }
+
+
+.card-info{ border-left: solid 20px #17a2b8; }
+.card-success{ border-left: solid 20px #146c43; }
+.card-danger{ border-left: solid 20px #dc3545; }
+.card-dark{ border-left: solid 20px #063b6c; }
+.card-warning{ border-left: solid 20px #ffc107; }
+.card-secondary{ border-left: solid 20px #6c757d; }
+
+.card-header-success{ background-color: #f8fcf5 !important; }
+.card-header-cark-blue{ background-color: #f0f4f9 !important; }
+
+
+/*##############################################################################################################*/
+/* Botões do nave bar  												*/
+/*##############################################################################################################*/
+
+.my-btn-danger {
+	border-radius: 3px 20px 20px 3px;
+	border-right: solid 20px #dc3545;
+	color: whitesmoke !important;
+}
+
+.my-btn-danger:hover {
+	background-color: #dc3545;
+	color: black !important;
+	transition: 0.3s;
+}
+
+.my-btn-success {
+	border-radius: 3px 20px 20px 3px;
+	border-right: solid 20px #146c43;
+	color: whitesmoke !important;
+}
+
+.my-btn-success:hover {
+	background-color: #146c43;
+	color: black !important;
+	transition: 0.3s;
+}
+
+.my-btn-secondary {
+	border-radius: 3px 20px 20px 3px;
+	border-right: solid 20px #5c636a;
+	color: whitesmoke !important;
+}
+
+.my-btn-secondary:hover {
+	background-color: #5c636a;
+	color: black !important;
+	transition: 0.3s;
+}
+
+.my-btn-warning {
+	border-radius: 3px 20px 20px 3px;
+	border-right: solid 20px #ffca2c;
+	color: whitesmoke !important;
+}
+
+.my-btn-warning:hover {
+	background-color: #ffca2c;
+	color: black !important;
+	transition: 0.3s;
+}
+
+.my-btn-warning {
+	border-radius: 3px 20px 20px 3px;
+	border-right: solid 20px #ffca2c;
+	color: whitesmoke !important;
+}
+
+.my-btn-warning:hover {
+	background-color: #ffca2c;
+	color: black !important;
+	transition: 0.3s;
+}
+
+.my-btn-dark {
+	border-radius: 3px 20px 20px 3px;
+	border-right: solid 20px #1c1f23;
+	color: whitesmoke !important;
+}
+
+.my-btn-dark:hover { background-color: #1c1f23; transition: 0.3s; }
+
+
+/*##############################################################################################################*/
+/* Paginas de listas grupos  											*/
+/*##############################################################################################################*/
+
+.group-list:hover { opacity: 80%; transition: 0.3s; }
+
+.page-group-main{
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,.125);
+	border-radius: 20px 3px 3px 20px;
+	background-clip: border-box;
+}
+
+
+.page-group-head-success{
+	border-left: solid 20px #146c43;
+	border-radius: 20px 3px 3px 0px;
+}
+
+.page-group-body-success{
+	border-left: solid 20px #146c43;
+	border-radius: 0px 3px 3px 0px;	
+}
+
+.page-group-body-success:hover{
+	border-left: solid 20px #072618;
+	border-radius: 0px 3px 3px 0px;	
+	transition: 0.3s;
+}
+
+.page-group-footer-success{
+	border-left: solid 20px #146c43;
+	border-radius: 0px 3px 3px 20px;
+
+}
+
+
+.page-group-head-secondary{
+	border-left: solid 20px #6c757d;
+	border-radius: 20px 3px 3px 0px;
+}
+
+.page-group-body-secondary{
+	border-left: solid 20px #6c757d;
+	border-radius: 0px 3px 3px 0px;	
+}
+
+.page-group-body-secondary:hover{
+	border-left: solid 20px #1c1f23;
+	border-radius: 0px 3px 3px 0px;	
+	transition: 0.3s;
+}
+
+
+.page-group-footer-secondary{
+	border-left: solid 20px #6c757d;
+	border-radius: 0px 3px 3px 20px;
+
+}
+
+.page-group-head-danger{
+	border-left: solid 20px #dc3545;
+	border-radius: 20px 3px 3px 0px;
+}
+
+.page-group-body-danger{
+	border-left: solid 20px #dc3545;
+	border-radius: 0px 3px 3px 0px;	
+}
+
+.page-group-body-danger:hover{
+	border-left: solid 20px #63262c;
+	border-radius: 0px 3px 3px 0px;	
+	transition: 0.3s;
+}
+
+.page-group-footer-danger{
+	border-left: solid 20px #dc3545;
+	border-radius: 0px 3px 3px 20px;
+
+}
+
+
+
+
+/*##############################################################################################################*/
+/* charts											*/
+/*##############################################################################################################*/
+.chart { height: 250px !important; }

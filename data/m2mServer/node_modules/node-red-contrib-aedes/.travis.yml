@@ -1,0 +1,22 @@
+sudo: false
+language: node_js
+cache:
+  npm: false
+env:
+  - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+services:
+  - mongodb
+node_js:
+  - "12"
+before_script:
+  - npm install -g node-red@1.2.9
+  - npm link node-red
+  - npm install -g mocha
+  - npm install -g semistandard
+  - npm install -g snazzy

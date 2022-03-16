@@ -1,0 +1,11 @@
+{
+    "name": "node-red-project",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "node-red-contrib-aedes": "~0.5.2",
+        "node-red-dashboard": "~2.30.0",
+        "node-red-node-mysql": "~0.2.1"
+    }
+}

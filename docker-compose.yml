@@ -1,0 +1,66 @@
+---
+version: '3.3'
+services:
+  sys_database:
+    image: mysql
+    container_name: sys_database
+    command: "--default-authentication-plugin=mysql_native_password"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: db_agrosensor
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: agrosensor
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - ./data/sysDatabase/mysql:/var/lib/mysql:rw
+      - ./data/sysDatabase/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+#    ports:
+#      - 3306:3306
+    networks:
+      - agrosensor-compose-network
+  m2m_server:
+    image: nodered/node-red:latest
+    container_name: m2m_server
+    restart: always
+    environment:
+      - TZ=America/Sao_Paulo
+    ports:
+ #     - 1880:1880
+      - 1883:1883
+    networks:
+      - agrosensor-compose-network
+    volumes:
+      - ./data/m2mServer:/data
+    depends_on:
+      - sys_database
+  web_server:
+    image: php:7.2-apache
+    build:
+      context: ./data/webServer
+      dockerfile: ./Dockerfile
+    container_name: web_server
+    restart: always
+    environment:
+      - TZ=America/Sao_Paulo
+    ports:
+      - '80:80'
+    networks:
+      - agrosensor-compose-network
+    volumes:
+      - ./data/webServer/var/www/html:/var/www/html
+      - ./data/webServer/var/log/apache2/access.log:/var/log/apache2/access.log
+      - ./data/webServer/var/log/apache2/error.log:/var/log/apache2/error.log
+      - ./data/webServer/var/log/apache2/ther_vhosts_access.log:/var/log/apache2/ther_vhosts_access.log
+      - ./data/webServer/etc/apache2/mods-enabled/rewrite.load:/etc/apache2/mods-enabled/rewrite.load
+      - ./data/webServer/etc/apache2/apache2.conf:/etc/apache2/apache2.conf
+      - ./data/webServer/etc/apache2/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    depends_on:
+      - sys_database 
+      - m2m_server   
+networks: 
+  agrosensor-compose-network:
+    driver: bridge
+
+
+

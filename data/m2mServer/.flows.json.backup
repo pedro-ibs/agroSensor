@@ -1,0 +1,1079 @@
+[
+    {
+        "id": "40abc053e7bca97f",
+        "type": "tab",
+        "label": "m2m_server",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "96b60cfdf2236a4d",
+        "type": "tab",
+        "label": "Desconectado?",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9d1092a9.9b30d",
+        "type": "subflow",
+        "name": "query array",
+        "info": "# Array query\nThis subflow allows you to query an array for a specific property in this array.  \n\n## Input\n``msg.payload`` (required) value of the property to be queried  \n``msg.data`` (required) the array to be queried  \n``msg.property`` (optional) the name of the property. You can also configure it from the subflow enviroment variable  \n\n## Output\n``msg.payload`` the last complete object found in the array where the previous payload content matches with the configured property  \n``msg.results`` amount of results found  \n",
+        "category": "",
+        "in": [
+            {
+                "x": 160,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "ed0f2ae5.deb468"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 840,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "b855422d.90e2c",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 840,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "5c5cc5dc.0d50bc",
+                        "port": 0
+                    },
+                    {
+                        "id": "b855422d.90e2c",
+                        "port": 1
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "property",
+                "type": "str",
+                "value": ""
+            }
+        ]
+    },
+    {
+        "id": "aa297f59e1a7fd66",
+        "type": "mqtt-broker",
+        "name": "mqtt_broker",
+        "broker": "m2m_server",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e55c8ee56720c67a",
+        "type": "MySQLdatabase",
+        "name": "sys_database",
+        "host": "sys_database",
+        "port": "3306",
+        "db": "agrosensor",
+        "tz": "+3:00",
+        "charset": "UTF8"
+    },
+    {
+        "id": "8880d363.148ac",
+        "type": "ui_group",
+        "name": "Thermostat demo",
+        "tab": "",
+        "order": 2,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "a844720c.608d6",
+        "type": "MySQLdatabase",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "nodered",
+        "tz": ""
+    },
+    {
+        "id": "1aa17875bd41686f",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#204a87",
+                "baseFont": "Arial,Arial,Helvetica,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#204a87",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#204a87",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#2f6cc5",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#204a87",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "Arial,Arial,Helvetica,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "dark"
+            }
+        },
+        "site": {
+            "name": "Agro Sensor Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "none",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "4b0c1214918c9929",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "f091c8a66380eb10",
+        "type": "ui_group",
+        "name": "Form",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "774248e17ad5c143",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "784647906c5bbd5f",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "91885429.d46108",
+        "type": "ui_tab",
+        "name": "Monitoramento On-Line",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "e0c7a5dc.4490d8",
+        "type": "ui_tab",
+        "name": "Tab 2",
+        "icon": "dashboard",
+        "order": 2
+    },
+    {
+        "id": "3e2427fa785c6405",
+        "type": "ui_tab",
+        "name": "Test stuff",
+        "icon": "dashboard"
+    },
+    {
+        "id": "06b955d08224a50b",
+        "type": "aedes broker",
+        "z": "40abc053e7bca97f",
+        "name": "MQTT Broker",
+        "mqtt_port": 1883,
+        "mqtt_ws_bind": "port",
+        "mqtt_ws_port": "",
+        "mqtt_ws_path": "",
+        "cert": "",
+        "key": "",
+        "certname": "",
+        "keyname": "",
+        "dburl": "",
+        "usetls": false,
+        "x": 270,
+        "y": 100,
+        "wires": [
+            [
+                "28d7938cf81caf31"
+            ]
+        ]
+    },
+    {
+        "id": "28d7938cf81caf31",
+        "type": "debug",
+        "z": "40abc053e7bca97f",
+        "name": "MQTT Broker",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a430fa7ac58d3a01",
+        "type": "mqtt in",
+        "z": "40abc053e7bca97f",
+        "name": "humidity",
+        "topic": "humidity/#",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "aa297f59e1a7fd66",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "b644e61945d4789a"
+            ]
+        ]
+    },
+    {
+        "id": "9d4d4f3209018b1f",
+        "type": "mqtt in",
+        "z": "40abc053e7bca97f",
+        "name": "temperature",
+        "topic": "temperature/#",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "aa297f59e1a7fd66",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 270,
+        "y": 220,
+        "wires": [
+            [
+                "b644e61945d4789a"
+            ]
+        ]
+    },
+    {
+        "id": "26ae6016c47870a7",
+        "type": "mqtt in",
+        "z": "40abc053e7bca97f",
+        "name": "vcc",
+        "topic": "vcc/#",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "aa297f59e1a7fd66",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 290,
+        "y": 280,
+        "wires": [
+            [
+                "b644e61945d4789a"
+            ]
+        ]
+    },
+    {
+        "id": "c4d0b9857265642d",
+        "type": "mqtt in",
+        "z": "40abc053e7bca97f",
+        "name": "vbat",
+        "topic": "vbat/#",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "aa297f59e1a7fd66",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 290,
+        "y": 340,
+        "wires": [
+            [
+                "b644e61945d4789a"
+            ]
+        ]
+    },
+    {
+        "id": "b644e61945d4789a",
+        "type": "change",
+        "z": "40abc053e7bca97f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "code",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            },
+            {
+                "t": "delete",
+                "p": "qos",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "retain",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 160,
+        "wires": [
+            [
+                "64022fe0b015a3c6"
+            ]
+        ]
+    },
+    {
+        "id": "2c0ab51897de2a9f",
+        "type": "function",
+        "z": "40abc053e7bca97f",
+        "name": "ler MAC e payload",
+        "func": "\nstr = msg.topic;\nstr = str.split('/', 2);\n\n/*\n * mais para frente topic irá virar o cosigo sql\n * utilizado nos nodes sys_database\n */\nmsg.topic = \"\";\n\n/*\n * my thoic corresponde ao topico a ser escrito no \n * banco de dados. code é utilisado para identificar\n * o sensor\n * O payload tambem será perdido ao decorrer do processo\n */\nmsg.myTopic = str[0];\nmsg.code    = str[1];\nmsg.value   = msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 280,
+        "wires": [
+            [
+                "ea531d127d4a4d64",
+                "84398c6dd580c0f2"
+            ]
+        ]
+    },
+    {
+        "id": "ea531d127d4a4d64",
+        "type": "debug",
+        "z": "40abc053e7bca97f",
+        "name": "data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "c831d94de06728bc",
+        "type": "debug",
+        "z": "40abc053e7bca97f",
+        "name": "sysdb_request",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "9d12fca0b178869b",
+        "type": "mysql",
+        "z": "40abc053e7bca97f",
+        "mydb": "e55c8ee56720c67a",
+        "name": "sys_database",
+        "x": 540,
+        "y": 400,
+        "wires": [
+            [
+                "c831d94de06728bc",
+                "576310a98db0f98e"
+            ]
+        ]
+    },
+    {
+        "id": "84398c6dd580c0f2",
+        "type": "template",
+        "z": "40abc053e7bca97f",
+        "name": "select sendor from mac",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "SELECT id FROM agrosensor.sensor WHERE mac_address = '{{code}}';\n",
+        "output": "str",
+        "x": 570,
+        "y": 340,
+        "wires": [
+            [
+                "9d12fca0b178869b"
+            ]
+        ]
+    },
+    {
+        "id": "576310a98db0f98e",
+        "type": "switch",
+        "z": "40abc053e7bca97f",
+        "name": "se não estiver vazio",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 560,
+        "y": 480,
+        "wires": [
+            [
+                "f680a17d9a9d4905",
+                "1cecfc602e011137"
+            ]
+        ]
+    },
+    {
+        "id": "1cecfc602e011137",
+        "type": "function",
+        "z": "40abc053e7bca97f",
+        "name": "ler id do payload",
+        "func": "\nmsg.payload = msg.payload[0].id;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 780,
+        "wires": [
+            [
+                "84fc70fe618b91cc"
+            ]
+        ]
+    },
+    {
+        "id": "ed0f2ae5.deb468",
+        "type": "switch",
+        "z": "9d1092a9.9b30d",
+        "name": "Validate .data",
+        "property": "data",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "istype",
+                "v": "array",
+                "vt": "array"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 300,
+        "y": 200,
+        "wires": [
+            [
+                "3a6d283a.a70638"
+            ],
+            [
+                "5c5cc5dc.0d50bc"
+            ]
+        ]
+    },
+    {
+        "id": "a03c934d.64a95",
+        "type": "debug",
+        "z": "9d1092a9.9b30d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "error",
+        "targetType": "msg",
+        "x": 880,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "5c5cc5dc.0d50bc",
+        "type": "change",
+        "z": "9d1092a9.9b30d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "error",
+                "pt": "msg",
+                "to": "Error - msg.data is not an array",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 260,
+        "wires": [
+            [
+                "a03c934d.64a95"
+            ]
+        ]
+    },
+    {
+        "id": "3a6d283a.a70638",
+        "type": "function",
+        "z": "9d1092a9.9b30d",
+        "name": "Query array",
+        "func": "var array = msg.data;\nvar property = msg.property ? msg.property : env.get(\"property\")\nvar condition = msg.payload\n\nvar newPayload\nvar results = 0\narray.forEach(element => {\n    if(element[property] == condition){\n        newPayload = element\n        results++\n    }\n});\n\nmsg.results = results \n\nif (results > 0 ){\n    msg.payload = newPayload\n} else{\n    msg.error = \"Error - no results found\"\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 530,
+        "y": 160,
+        "wires": [
+            [
+                "b855422d.90e2c"
+            ]
+        ]
+    },
+    {
+        "id": "b855422d.90e2c",
+        "type": "switch",
+        "z": "9d1092a9.9b30d",
+        "name": "Error?",
+        "property": "results",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 690,
+        "y": 160,
+        "wires": [
+            [],
+            [
+                "4edba79f.de26a8"
+            ]
+        ]
+    },
+    {
+        "id": "4edba79f.de26a8",
+        "type": "debug",
+        "z": "9d1092a9.9b30d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "error",
+        "targetType": "msg",
+        "x": 880,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "84fc70fe618b91cc",
+        "type": "template",
+        "z": "40abc053e7bca97f",
+        "name": "insert measures",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "INSERT INTO agrosensor.measures (id_sensor, `timestamp`, payload, topic) VALUES({{payload}}, '{{timestamp}}', '{{value}}', '{{myTopic}}');",
+        "output": "str",
+        "x": 540,
+        "y": 840,
+        "wires": [
+            [
+                "75eb562088f32c5a"
+            ]
+        ]
+    },
+    {
+        "id": "75eb562088f32c5a",
+        "type": "mysql",
+        "z": "40abc053e7bca97f",
+        "mydb": "e55c8ee56720c67a",
+        "name": "sys_database",
+        "x": 540,
+        "y": 900,
+        "wires": [
+            [
+                "fe4c2335d89b3847"
+            ]
+        ]
+    },
+    {
+        "id": "fe4c2335d89b3847",
+        "type": "debug",
+        "z": "40abc053e7bca97f",
+        "name": "sysdb_request",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "f680a17d9a9d4905",
+        "type": "switch",
+        "z": "40abc053e7bca97f",
+        "name": "att vcc, vbat, timestamp",
+        "property": "myTopic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "vbat",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "vcc",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 850,
+        "y": 480,
+        "wires": [
+            [
+                "a84265d1be381d1a"
+            ],
+            [
+                "e76338236fb95559"
+            ]
+        ]
+    },
+    {
+        "id": "0a0f0769465e8d58",
+        "type": "template",
+        "z": "40abc053e7bca97f",
+        "name": "Update status e vbat",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "UPDATE agrosensor.sensor SET {{myTopic}}='{{value}}', last_measures = '{{timestamp}}', status = '{{myStatus}}'  WHERE mac_address='{{code}}';\n",
+        "output": "str",
+        "x": 840,
+        "y": 600,
+        "wires": [
+            [
+                "43cdfb02018e7e94",
+                "4673e08c4e06d132"
+            ]
+        ]
+    },
+    {
+        "id": "4673e08c4e06d132",
+        "type": "mysql",
+        "z": "40abc053e7bca97f",
+        "mydb": "e55c8ee56720c67a",
+        "name": "sys_database",
+        "x": 800,
+        "y": 840,
+        "wires": [
+            [
+                "0dbaa474c6221868"
+            ]
+        ]
+    },
+    {
+        "id": "0dbaa474c6221868",
+        "type": "debug",
+        "z": "40abc053e7bca97f",
+        "name": "sysdb_request",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "64022fe0b015a3c6",
+        "type": "function",
+        "z": "40abc053e7bca97f",
+        "name": "timeConvert",
+        "func": "var dt = new Date(msg.timestamp);\nmsg.timestamp = dt.getFullYear()+\"-\"+(dt.getMonth()+1)+\"-\"+dt.getDate()+\" \"+dt.getHours()+\":\"+dt.getMinutes()+\":\"+dt.getSeconds();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 220,
+        "wires": [
+            [
+                "2c0ab51897de2a9f"
+            ]
+        ]
+    },
+    {
+        "id": "43cdfb02018e7e94",
+        "type": "debug",
+        "z": "40abc053e7bca97f",
+        "name": "update",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "topic",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "a84265d1be381d1a",
+        "type": "function",
+        "z": "40abc053e7bca97f",
+        "name": "bateria baixa?",
+        "func": "\n\nif( msg.value <= 4.5 ){\n    msg.myStatus = 3;\n} else {\n    msg.myStatus = 1;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 560,
+        "wires": [
+            [
+                "0a0f0769465e8d58"
+            ]
+        ]
+    },
+    {
+        "id": "e76338236fb95559",
+        "type": "template",
+        "z": "40abc053e7bca97f",
+        "name": "Update vcc",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "UPDATE agrosensor.sensor SET {{myTopic}}='{{value}}', last_measures = '{{timestamp}}'  WHERE mac_address='{{code}}';\n",
+        "output": "str",
+        "x": 790,
+        "y": 660,
+        "wires": [
+            [
+                "4673e08c4e06d132",
+                "43cdfb02018e7e94"
+            ]
+        ]
+    },
+    {
+        "id": "95c7f8aafd2c2715",
+        "type": "function",
+        "z": "96b60cfdf2236a4d",
+        "name": "timestmp - 1hora",
+        "func": "\n\nvar dt = new Date(msg.timestamp - 3600*1000); // reduzir uma hora \n\n\nmsg.timestamp = dt.getFullYear()+\"-\"+(dt.getMonth()+1)+\"-\"+dt.getDate()+\" \"+dt.getHours()+\":\"+dt.getMinutes()+\":\"+dt.getSeconds();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 400,
+        "wires": [
+            [
+                "54b676b24f3abc9e"
+            ]
+        ]
+    },
+    {
+        "id": "75ad64b1e9377fd1",
+        "type": "mysql",
+        "z": "96b60cfdf2236a4d",
+        "mydb": "e55c8ee56720c67a",
+        "name": "sys_database",
+        "x": 340,
+        "y": 560,
+        "wires": [
+            [
+                "11da24deaf3195cc"
+            ]
+        ]
+    },
+    {
+        "id": "54b676b24f3abc9e",
+        "type": "template",
+        "z": "96b60cfdf2236a4d",
+        "name": "Update vcc",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "UPDATE agrosensor.sensor SET status= 2 WHERE `last_measures` < '{{timestamp}}' AND status > 0;\n",
+        "output": "str",
+        "x": 330,
+        "y": 480,
+        "wires": [
+            [
+                "75ad64b1e9377fd1",
+                "516a4c3ff0dd6a4f"
+            ]
+        ]
+    },
+    {
+        "id": "2005bbe82460ed55",
+        "type": "trigger",
+        "z": "96b60cfdf2236a4d",
+        "name": "",
+        "op1": "",
+        "op2": "0",
+        "op1type": "date",
+        "op2type": "str",
+        "duration": "-10",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 350,
+        "y": 240,
+        "wires": [
+            [
+                "0dc559d4095e8723"
+            ]
+        ]
+    },
+    {
+        "id": "516a4c3ff0dd6a4f",
+        "type": "debug",
+        "z": "96b60cfdf2236a4d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "topic",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "11da24deaf3195cc",
+        "type": "debug",
+        "z": "96b60cfdf2236a4d",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "0dc559d4095e8723",
+        "type": "change",
+        "z": "96b60cfdf2236a4d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 350,
+        "y": 320,
+        "wires": [
+            [
+                "95c7f8aafd2c2715"
+            ]
+        ]
+    },
+    {
+        "id": "89e082bd6d59c548",
+        "type": "inject",
+        "z": "96b60cfdf2236a4d",
+        "name": "Started",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 240,
+        "wires": [
+            [
+                "2005bbe82460ed55"
+            ]
+        ]
+    }
+]
